@@ -1,14 +1,23 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6283159&assignment_repo_type=AssignmentRepo)
-# jw05
+游戏灵感来源：魔塔
 
-请将jw04的迷宫任务改造为一个ruguelike的葫芦娃与妖精两方对战游戏，游戏如下图所示。
+攻击会直接根据双方攻击力减去防御力来造成伤害，直到一方死亡。
 
-![](image-11.jpeg)
+击杀怪物可以提供经验值和金钱，合理规划，杀更多的怪物，使自己越来越强。
 
-需求如下：
+怪物会随着时间增长越来越强越来越多。
 
-- 每个生物体都是一个线程
-- 每个生物体的移动、攻击等行为决策可使用Minimax或其他算法（可参考https://www.baeldung.com/java-minimax-algorithm）
-- 请特别注意线程race condition（两个生物体不能占据同一个tile，对同一生物体的两个攻击行为应该先后发生作用，等）
-- 请发挥想象力
-- 完成后录屏发qq群或小破站
+右侧有商店和人物信息，商店可以买属性
+
+按F4查看周围怪物数据，来判断杀哪只怪物收益最大化
+
+怪物是不会动的，因为魔塔本质是个规划的游戏，玩家要做的是考虑杀怪顺序而不是去走位躲怪。
+
+后续更新：
+
+UI界面。
+
+更多怪物。
+
+maven管理
+
+网络对战：玩家们互相杀怪物赚取经验和金钱，提升战斗力，觉得自己战斗力够高了就去找对方杀吧！
