@@ -1,3 +1,5 @@
+视频地址：https://www.bilibili.com/video/BV1KQ4y1e7xa/
+
 游戏灵感来源：魔塔
 
 攻击会直接根据双方攻击力减去防御力来造成伤害，直到一方死亡。
