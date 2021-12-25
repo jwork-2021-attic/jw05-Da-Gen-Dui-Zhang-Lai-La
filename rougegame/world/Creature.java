@@ -9,7 +9,7 @@ import screen.*;
  */
 public class Creature {
 
-    private World world;
+    public World world;
 
     private int x;
 

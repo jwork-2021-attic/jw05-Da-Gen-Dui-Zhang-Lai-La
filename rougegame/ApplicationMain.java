@@ -1,3 +1,4 @@
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -19,7 +20,7 @@ public class ApplicationMain extends JFrame implements KeyListener {
 
     public ApplicationMain() {
         super();
-        terminal = new AsciiPanel(50, 35, AsciiFont.my_png);
+        terminal = new AsciiPanel(50, 30, AsciiFont.my_png);
         add(terminal);
         pack();
         screen = new StartScreen();
@@ -33,6 +34,7 @@ public class ApplicationMain extends JFrame implements KeyListener {
         screen=screen.displayOutput(terminal);
         super.repaint();
     }
+
     /**
      *
      * @param e
@@ -68,7 +70,7 @@ public class ApplicationMain extends JFrame implements KeyListener {
                 ()->{
                         while (true){
                             try {
-                                Thread.sleep(1500);
+                                Thread.sleep(2000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

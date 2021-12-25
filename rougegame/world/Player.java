@@ -50,14 +50,16 @@ public class Player extends Creature{
          int damage =this.attackValue() - other.defenseValue();
          int hurt=other.attackValue() - this.defenseValue();
          int totalHurt=0;
-            while(other.hp()>0&&this.hp()>0){
-                other.modifyHP(-damage);
+         int hp=other.hp();
+            while(hp>0&&this.hp()>0){
+                hp-=damage;
                 this.modifyHP(-hurt);
                 totalHurt+=hurt;
              }
              this.notify("YOU GET %s DAMAGE",totalHurt);
          if(this.hp()<=0)
             return;
+            other.world.remove(other);
             this.modifyGrade(other.giveGrade());
          this.getExp(other.giveExp());
          this.getMoney(other.giveMoney());

@@ -10,6 +10,7 @@ public class World {
     private int width;
     private int height;
     private List<Creature> creatures;
+    private List<Creature> creaturesSave;
     public static final int TILE_TYPES = 9;
 
     public World(Tile[][] tiles) {
@@ -17,6 +18,7 @@ public class World {
         this.width = tiles.length;
         this.height = tiles[0].length;
         this.creatures = new ArrayList<>();
+        this.creaturesSave = new ArrayList<>();
     }
 
     public Tile tile(int x, int y) {
@@ -80,6 +82,14 @@ public class World {
 
     public List<Creature> getCreatures() {
         return this.creatures;
+    }
+    public void save() {
+        this.creaturesSave = new ArrayList<>();
+        this.creaturesSave.addAll(creatures);
+    }
+    public void load(){
+        this.creatures= new ArrayList<>();
+        this.creatures.addAll(creaturesSave);
     }
     public void remove(Creature target) {
         this.creatures.remove(target);

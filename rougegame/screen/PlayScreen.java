@@ -23,19 +23,24 @@ import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  *
  * @author Aeranythe Echosong
  */
 public class PlayScreen implements Screen {
-
     private World world;
     private Player player;
     private int screenWidth;
     private int screenHeight;
     private List<String> messages;
     private List<String> oldMessages;
+    int saveHp=0;
+    int saveAttack=0;
+    int saveDefense=0;
+    int saveExp=0;
+    int saveMoney=0;
+    int saveX;
+    int saveY;
     int countTime=0;
     public PlayScreen() {
         this.screenWidth = 30;
@@ -65,7 +70,7 @@ public class PlayScreen implements Screen {
             ()->{
                     while (true){
                         try {
-                            Thread.sleep(7000);
+                            Thread.sleep(10000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -77,11 +82,28 @@ public class PlayScreen implements Screen {
                             creatureFactory.newShrem(this.messages);
                             else if(level<=20)
                             creatureFactory.newBat(this.messages);
-                            else 
+                            else if(level<=30)
                             creatureFactory.newSkeleton(this.messages);
+                            else if(level<=40)
+                            creatureFactory.newBull(this.messages);
+                            else 
+                            creatureFactory.newDragon(this.messages);
                             }
                     }
             }
+        ).start();
+
+        new Thread(     //每隔一段时间生成宝石
+        ()->{
+                while (true){
+                    try {
+                        Thread.sleep(40000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    creatureFactory.newDiamond(this.messages);
+                        }
+        }
         ).start();
     }
 
@@ -128,15 +150,15 @@ public class PlayScreen implements Screen {
         terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY(), player.color());
         // Stats
         String hpStat = String.format("%3d:%3d HP", player.hp(), player.maxHP());
-        terminal.write(hpStat, this.screenWidth+1, 17);
+        terminal.write(hpStat, this.screenWidth+1, 15);
         String expStat = String.format("%3d:%3d ExP", player.exp(),player.maxExp());
-        terminal.write(expStat, this.screenWidth+1, 18);
+        terminal.write(expStat, this.screenWidth+1, 16);
         String attackStat = String.format("%3d ATTACK", player.attackValue());
-        terminal.write(attackStat, this.screenWidth+1, 19);
+        terminal.write(attackStat, this.screenWidth+1, 17);
         String defenseStat = String.format("%3d DEFENSE", player.defenseValue());
-        terminal.write(defenseStat, this.screenWidth+1, 20);
+        terminal.write(defenseStat, this.screenWidth+1, 18);
         String moneyStat = String.format("%3d MONEY", player.money());
-        terminal.write(moneyStat, this.screenWidth+1, 21);
+        terminal.write(moneyStat, this.screenWidth+1, 19);
         //Shop
         terminal.write("Shop",this.screenWidth+1,7);
         String shopStat= String.format("PAY %s TO BUY",shopCost);
@@ -147,9 +169,11 @@ public class PlayScreen implements Screen {
         terminal.write("PRESS F4 ",this.screenWidth+1,0);
         terminal.write("TO SHOW NEARBY",this.screenWidth+1,1);
         terminal.write("ENEMY DATA",this.screenWidth+1,2);
+        terminal.write("F5:SAVE",this.screenWidth+1,4);
+        terminal.write("F6:LOAD",this.screenWidth+1,5);
         //Grade
         String Grade= String.format("GRADE %s",player.getGrade());
-        terminal.write(Grade,this.screenWidth+1,28);
+        terminal.write(Grade,this.screenWidth+1,24);
         // Messages
         displayMessages(terminal, this.messages);
         if(player.hp()<=0){       
@@ -187,6 +211,26 @@ public class PlayScreen implements Screen {
             shopCost+=4;
         }
     }
+    public void savePlayerData(){
+         saveHp=this.player.hp();
+         saveAttack=this.player.attackValue();
+         saveDefense=this.player.defenseValue();
+         saveExp=this.player.exp();
+         saveMoney=this.player.money();
+         saveX=this.player.x();
+         saveY=this.player.y();
+        this.player.notify("SAVE SUCESS");
+    }
+    public void loadPlayerData(){
+        this.player.modifyHP(saveHp-this.player.hp());
+        this.player.modifyattackValue(saveAttack-this.player.attackValue());
+        this.player.modifydefenseValue(saveDefense-this.player.defenseValue());
+        this.player.getExp(saveExp-this.player.exp());
+       this.player.getMoney(saveMoney-this.player.money());
+        this.player.setX(saveX);
+        this.player.setY(saveY);
+        this.player.notify("LOAD SUCESS");
+    }
     @Override
     public Screen respondToUserInput(KeyEvent key) {
         switch (key.getKeyCode()) {
@@ -202,18 +246,34 @@ public class PlayScreen implements Screen {
             case KeyEvent.VK_DOWN:
                 player.moveBy(0, 1);
                 break;
-            case KeyEvent.VK_F1:
+            case KeyEvent.VK_F1:{
                 this.buyThing(1);
-                break;
-            case KeyEvent.VK_F2:
+                this.player.notify("YOU BUY ATTACK");
+            
+                break;}
+            case KeyEvent.VK_F2:{
                 this.buyThing(2);
+                this.player.notify("YOU BUY DEFENSE");
                 break;
-            case KeyEvent.VK_F3:
+            }
+            case KeyEvent.VK_F3:{
                 this.buyThing(3);
+                this.player.notify("YOU BUY HP");
                 break;
+        }
             case KeyEvent.VK_F4:
                 this.enemyAltras();
                 break;
+            case KeyEvent.VK_F5:{
+                world.save();
+                this.savePlayerData();
+                break;
+            }
+            case KeyEvent.VK_F6:{
+                world.load();
+                this.loadPlayerData();
+                break;
+            }
         }
         return this;
     }

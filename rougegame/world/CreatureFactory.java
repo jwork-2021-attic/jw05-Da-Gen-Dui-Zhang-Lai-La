@@ -35,38 +35,38 @@ public class CreatureFactory {
     }
 
     public Creature newPlayer(List<String> messages) {
-        Player player = new Player(this.world, (char)2, Color.blue, 1000, 12, 12, 900,25);
+        Player player = new Player(this.world, (char)2, Color.WHITE, 1000, 12, 12, 900,25);
         world.addAtEmptyLocation(player);
         new PlayerAI(player, messages);
         return player;
     }
 
     public Creature newShrem(List<String> messages) {
-        Monster fungus = new Monster(this.world, (char)140, Color.ORANGE, 70, 15, 2, 2,2,2,1);
+        Monster fungus = new Monster(this.world, (char)140, Color.PINK, 70, 15, 2, 2,2,2,1);
         world.addAtEmptyLocation(fungus);
         new MonsterAI(fungus, this);
         return fungus;
     }
     public Creature newBat(List<String> messages){
-        Monster shrem = new Monster(this.world, (char)135, Color.RED, 100, 25, 5, 3,3,3,2);
+        Monster shrem = new Monster(this.world, (char)135, Color.orange, 100, 25, 5, 3,3,3,2);
         world.addAtEmptyLocation(shrem);
         new MonsterAI(shrem, this);
         return shrem;
     }
     public Creature newSkeleton(List<String> messages){
-        Monster skeleton = new Monster(this.world, (char)224, Color.RED, 110, 30, 5,5,5,4,6);
+        Monster skeleton = new Monster(this.world, (char)224, Color.MAGENTA, 110, 30, 5,5,5,4,6);
         world.addAtEmptyLocation(skeleton);
         new MonsterAI(skeleton, this);
         return skeleton;
     }
     public Creature newBull(List<String> messages){
-        Monster bullGuy = new Monster(this.world, (char)38, Color.gray, 200, 35, 10,5,5,5,8);
+        Monster bullGuy = new Monster(this.world, (char)38, Color.blue, 200, 35, 10,5,5,5,8);
         world.addAtEmptyLocation(bullGuy);
         new MonsterAI(bullGuy, this);
         return bullGuy;
     }
     public Creature newDragon(List<String> messages){
-        Monster dragon = new Monster(this.world, (char)143, Color.BLUE, 300, 40, 20,5,8,6,10);
+        Monster dragon = new Monster(this.world, (char)143, Color.RED, 300, 40, 20,5,8,6,10);
         world.addAtEmptyLocation(dragon);
         new MonsterAI(dragon, this);
         return dragon;
