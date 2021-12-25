@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="zh"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CreatureFactory.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">game</a> &gt; <a href="index.source.html" class="el_package">world</a> &gt; <span class="el_source">CreatureFactory.java</span></div><h1>CreatureFactory.java</h1><pre class="source lang-java linenums">/*
+ * Copyright (C) 2015 Aeranythe Echosong
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+ */
+package world;
+
+import java.util.List;
+import java.awt.Color;
+import asciiPanel.AsciiPanel;
+
+
+/**
+ *
+ * @author Aeranythe Echosong
+ */
+public class CreatureFactory {
+
+    private World world;
+
+<span class="nc" id="L33">    public CreatureFactory(World world) {</span>
+<span class="nc" id="L34">        this.world = world;</span>
+<span class="nc" id="L35">    }</span>
+
+    public Creature newPlayer(List&lt;String&gt; messages) {
+<span class="nc" id="L38">        Player player = new Player(this.world, (char)2, Color.WHITE, 1000, 12, 12, 900,25);</span>
+<span class="nc" id="L39">        world.addAtEmptyLocation(player);</span>
+<span class="nc" id="L40">        new PlayerAI(player, messages);</span>
+<span class="nc" id="L41">        return player;</span>
+    }
+
+    public Creature newShrem(List&lt;String&gt; messages) {
+<span class="nc" id="L45">        Monster fungus = new Monster(this.world, (char)140, Color.PINK, 70, 15, 2, 2,2,2,1);</span>
+<span class="nc" id="L46">        world.addAtEmptyLocation(fungus);</span>
+<span class="nc" id="L47">        new MonsterAI(fungus, this);</span>
+<span class="nc" id="L48">        return fungus;</span>
+    }
+    public Creature newBat(List&lt;String&gt; messages){
+<span class="nc" id="L51">        Monster shrem = new Monster(this.world, (char)135, Color.orange, 100, 25, 5, 3,3,3,2);</span>
+<span class="nc" id="L52">        world.addAtEmptyLocation(shrem);</span>
+<span class="nc" id="L53">        new MonsterAI(shrem, this);</span>
+<span class="nc" id="L54">        return shrem;</span>
+    }
+    public Creature newSkeleton(List&lt;String&gt; messages){
+<span class="nc" id="L57">        Monster skeleton = new Monster(this.world, (char)224, Color.MAGENTA, 110, 30, 5,5,5,4,6);</span>
+<span class="nc" id="L58">        world.addAtEmptyLocation(skeleton);</span>
+<span class="nc" id="L59">        new MonsterAI(skeleton, this);</span>
+<span class="nc" id="L60">        return skeleton;</span>
+    }
+    public Creature newBull(List&lt;String&gt; messages){
+<span class="nc" id="L63">        Monster bullGuy = new Monster(this.world, (char)38, Color.blue, 200, 35, 10,5,5,5,8);</span>
+<span class="nc" id="L64">        world.addAtEmptyLocation(bullGuy);</span>
+<span class="nc" id="L65">        new MonsterAI(bullGuy, this);</span>
+<span class="nc" id="L66">        return bullGuy;</span>
+    }
+    public Creature newDragon(List&lt;String&gt; messages){
+<span class="nc" id="L69">        Monster dragon = new Monster(this.world, (char)143, Color.RED, 300, 40, 20,5,8,6,10);</span>
+<span class="nc" id="L70">        world.addAtEmptyLocation(dragon);</span>
+<span class="nc" id="L71">        new MonsterAI(dragon, this);</span>
+<span class="nc" id="L72">        return dragon;</span>
+    }
+    public Creature newDiamond(List&lt;String&gt; messages){
+<span class="nc" id="L75">        Diamond red =new Diamond(this.world, (char)236, Color.ORANGE, 1, 0, 0,0,1,1);</span>
+     
+<span class="nc" id="L77">        world.addAtEmptyLocation(red);</span>
+<span class="nc" id="L78">        new MonsterAI(red, this);</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        for(int i=-1;i&lt;=1;i++)</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            for(int j=-1;j&lt;=1;j++){</span>
+<span class="nc bnc" id="L81" title="All 6 branches missed.">                if(i!=0||j!=0&amp;&amp;i!=j)</span>
+<span class="nc" id="L82">        this.newDiamondKeeper(messages, red.x()+i, red.y()+j);</span>
+        }
+<span class="nc" id="L84">        return red;</span>
+    }
+    public Creature newDiamondKeeper(List&lt;String&gt; messages,int x,int y){
+<span class="nc" id="L87">        Monster red =new Monster(this.world, (char)14, Color.GREEN,  210, 30, 5,5,5,4,5);</span>
+<span class="nc" id="L88">        world.addAtChooseLocation(red,x,y);</span>
+<span class="nc" id="L89">        new MonsterAI(red, this);</span>
+<span class="nc" id="L90">        return red;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
