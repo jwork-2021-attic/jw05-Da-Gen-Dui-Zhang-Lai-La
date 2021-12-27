@@ -1,4 +1,4 @@
-视频地址：https://www.bilibili.com/video/BV1KQ4y1e7xa/
+视频地址：https://www.bilibili.com/video/BV17r4y1m7Ac?spm_id_from=333.999.0.0
 
 游戏灵感来源：魔塔
 
