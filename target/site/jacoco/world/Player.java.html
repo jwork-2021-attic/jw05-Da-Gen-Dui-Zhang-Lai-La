@@ -4,14 +4,14 @@ public class Player extends Creature{
     int maxExp;
     int exp;
     int money;
-<span class="nc" id="L7">    int grade=0;</span>
+<span class="fc" id="L7">    int grade=0;</span>
     public Player(World world, char glyph, Color color, int maxHP, int attack, int defense, int visionRadius,int maxExp) {
-<span class="nc" id="L9">        super(world,  glyph, color,  maxHP,  attack, defense, visionRadius);</span>
-<span class="nc" id="L10">        this.maxExp=maxExp;</span>
-<span class="nc" id="L11">        this.exp=0;</span>
+<span class="fc" id="L9">        super(world,  glyph, color,  maxHP,  attack, defense, visionRadius);</span>
+<span class="fc" id="L10">        this.maxExp=maxExp;</span>
+<span class="fc" id="L11">        this.exp=0;</span>
         //this.money=0;
-<span class="nc" id="L13">        this.money=50;</span>
-<span class="nc" id="L14">    }</span>
+<span class="fc" id="L13">        this.money=50;</span>
+<span class="fc" id="L14">    }</span>
     public void levelUp(){
 <span class="nc" id="L16">        super.modifyHP(30);</span>
 <span class="nc" id="L17">        super.modifymaxHP(15);</span>
@@ -23,7 +23,7 @@ public class Player extends Creature{
 <span class="nc" id="L23">        return this.exp;</span>
     }
     public int maxExp(){
-<span class="nc" id="L26">        return this.maxExp;</span>
+<span class="fc" id="L26">        return this.maxExp;</span>
     }
     public void getExp(int amount){
 <span class="nc" id="L29">        this.exp+=amount;</span>
@@ -33,7 +33,7 @@ public class Player extends Creature{
         }
 <span class="nc" id="L34">    }</span>
     public int money(){
-<span class="nc" id="L36">        return this.money;</span>
+<span class="fc" id="L36">        return this.money;</span>
     }
     public void getMoney(int amount){
 <span class="nc" id="L39">        this.money+=amount;</span>

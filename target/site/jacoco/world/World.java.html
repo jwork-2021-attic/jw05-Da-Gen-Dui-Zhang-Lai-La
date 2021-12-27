@@ -13,13 +13,13 @@ public class World {
     private List&lt;Creature&gt; creaturesSave;
     public static final int TILE_TYPES = 9;
 
-<span class="nc" id="L16">    public World(Tile[][] tiles) {</span>
-<span class="nc" id="L17">        this.tiles = tiles;</span>
-<span class="nc" id="L18">        this.width = tiles.length;</span>
-<span class="nc" id="L19">        this.height = tiles[0].length;</span>
-<span class="nc" id="L20">        this.creatures = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L21">        this.creaturesSave = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L22">    }</span>
+<span class="fc" id="L16">    public World(Tile[][] tiles) {</span>
+<span class="fc" id="L17">        this.tiles = tiles;</span>
+<span class="fc" id="L18">        this.width = tiles.length;</span>
+<span class="fc" id="L19">        this.height = tiles[0].length;</span>
+<span class="fc" id="L20">        this.creatures = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L21">        this.creaturesSave = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L22">    }</span>
 
     public Tile tile(int x, int y) {
 <span class="nc bnc" id="L25" title="All 8 branches missed.">        if (x &lt; 0 || x &gt;= width || y &lt; 0 || y &gt;= height) {</span>
@@ -38,11 +38,11 @@ public class World {
     }
 
     public int width() {
-<span class="nc" id="L41">        return width;</span>
+<span class="fc" id="L41">        return width;</span>
     }
 
     public int height() {
-<span class="nc" id="L45">        return height;</span>
+<span class="fc" id="L45">        return height;</span>
     }
 
     public void dig(int x, int y) {

@@ -40,7 +40,7 @@ public class Creature {
     private Color color;
 
     public Color color() {
-<span class="nc" id="L43">        return this.color;</span>
+<span class="fc" id="L43">        return this.color;</span>
     }
 
     private CreatureAI ai;
@@ -60,7 +60,7 @@ public class Creature {
     private int hp;
 
     public int hp() {
-<span class="nc" id="L63">        return this.hp;</span>
+<span class="fc" id="L63">        return this.hp;</span>
     }
 
     public void modifyHP(int amount) {
@@ -78,7 +78,7 @@ public class Creature {
     }
     int giveMoney;
     public int giveMoney(){
-<span class="nc" id="L81">        return this.giveMoney;</span>
+<span class="fc" id="L81">        return this.giveMoney;</span>
     }
     int giveAttack;
    int giveDefense;
@@ -91,7 +91,7 @@ public int giveDefense() {
     private int attackValue;
 
     public int attackValue() {
-<span class="nc" id="L94">        return this.attackValue;</span>
+<span class="fc" id="L94">        return this.attackValue;</span>
     }
     public void modifyattackValue(int amount) {
 <span class="nc" id="L97">        this.attackValue += amount;</span>
@@ -99,7 +99,7 @@ public int giveDefense() {
     private int defenseValue;
 
     public int defenseValue() {
-<span class="nc" id="L102">        return this.defenseValue;</span>
+<span class="fc" id="L102">        return this.defenseValue;</span>
     }
     public void modifydefenseValue(int amount) {
 <span class="nc" id="L105">        this.defenseValue += amount;</span>
@@ -113,9 +113,9 @@ public int giveDefense() {
     public boolean canSee(int wx, int wy) {
 <span class="nc" id="L114">        return ai.canSee(wx, wy);</span>
     }
-<span class="nc" id="L116">    boolean ifDiamond=false;</span>
+<span class="fc" id="L116">    boolean ifDiamond=false;</span>
     public boolean ifDiamond() {
-<span class="nc" id="L118">        return ifDiamond;</span>
+<span class="fc" id="L118">        return ifDiamond;</span>
     }
     public Tile tile(int wx, int wy) {
 <span class="nc" id="L121">        return world.tile(wx, wy);</span>
@@ -174,17 +174,17 @@ public int giveDefense() {
 <span class="nc" id="L174">    }</span>
     int giveGrade;
     public int giveGrade(){
-<span class="nc" id="L177">        return this.giveGrade;</span>
+<span class="fc" id="L177">        return this.giveGrade;</span>
     }
-<span class="nc" id="L179">    public Creature(World world, char glyph, Color color, int maxHP, int attack, int defense, int visionRadius) {</span>
-<span class="nc" id="L180">        this.world = world;</span>
-<span class="nc" id="L181">        this.glyph = glyph;</span>
-<span class="nc" id="L182">        this.color = color;</span>
-<span class="nc" id="L183">        this.maxHP = maxHP;</span>
-<span class="nc" id="L184">        this.hp = maxHP;</span>
-<span class="nc" id="L185">        this.attackValue = attack;</span>
-<span class="nc" id="L186">        this.defenseValue = defense;</span>
-<span class="nc" id="L187">        this.visionRadius = visionRadius;</span>
-<span class="nc" id="L188">    }</span>
+<span class="fc" id="L179">    public Creature(World world, char glyph, Color color, int maxHP, int attack, int defense, int visionRadius) {</span>
+<span class="fc" id="L180">        this.world = world;</span>
+<span class="fc" id="L181">        this.glyph = glyph;</span>
+<span class="fc" id="L182">        this.color = color;</span>
+<span class="fc" id="L183">        this.maxHP = maxHP;</span>
+<span class="fc" id="L184">        this.hp = maxHP;</span>
+<span class="fc" id="L185">        this.attackValue = attack;</span>
+<span class="fc" id="L186">        this.defenseValue = defense;</span>
+<span class="fc" id="L187">        this.visionRadius = visionRadius;</span>
+<span class="fc" id="L188">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

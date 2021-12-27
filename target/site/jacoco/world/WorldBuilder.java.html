@@ -29,34 +29,34 @@ public class WorldBuilder {
     private int height;
     private Tile[][] tiles;
 
-<span class="nc" id="L32">    public WorldBuilder(int width, int height) {</span>
-<span class="nc" id="L33">        this.width = width;</span>
-<span class="nc" id="L34">        this.height = height;</span>
-<span class="nc" id="L35">        this.tiles = new Tile[width][height];</span>
-<span class="nc" id="L36">    }</span>
+<span class="fc" id="L32">    public WorldBuilder(int width, int height) {</span>
+<span class="fc" id="L33">        this.width = width;</span>
+<span class="fc" id="L34">        this.height = height;</span>
+<span class="fc" id="L35">        this.tiles = new Tile[width][height];</span>
+<span class="fc" id="L36">    }</span>
 
     public World build() {
-<span class="nc" id="L39">        return new World(tiles);</span>
+<span class="fc" id="L39">        return new World(tiles);</span>
     }
 
     private WorldBuilder makeWorld() {
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        for (int width = 0; width &lt; this.width; width++) {</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">            for (int height = 0; height &lt; this.height; height++) {</span>
-<span class="nc bnc" id="L45" title="All 8 branches missed.">                    if(width==0||height==0||width==this.width-1||height==this.height-1)</span>
-<span class="nc" id="L46">                        tiles[width][height] = Tile.WALL;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (int width = 0; width &lt; this.width; width++) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            for (int height = 0; height &lt; this.height; height++) {</span>
+<span class="fc bfc" id="L45" title="All 8 branches covered.">                    if(width==0||height==0||width==this.width-1||height==this.height-1)</span>
+<span class="fc" id="L46">                        tiles[width][height] = Tile.WALL;</span>
                         else
-<span class="nc" id="L48">                        tiles[width][height] = Tile.FLOOR;</span>
+<span class="fc" id="L48">                        tiles[width][height] = Tile.FLOOR;</span>
             }
         }
-<span class="nc" id="L51">        return this;</span>
+<span class="fc" id="L51">        return this;</span>
     }
 
     private WorldBuilder smooth(int factor) {
-<span class="nc" id="L55">        return this;</span>
+<span class="fc" id="L55">        return this;</span>
     }
 
     public WorldBuilder makeCaves() {
-<span class="nc" id="L59">        return makeWorld().smooth(10);</span>
+<span class="fc" id="L59">        return makeWorld().smooth(10);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
