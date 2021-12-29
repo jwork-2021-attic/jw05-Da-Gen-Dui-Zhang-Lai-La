@@ -126,7 +126,7 @@ public class PlayScreen implements Screen {
             if (creature.x() >= left && creature.x() < left + screenWidth && creature.y() >= top
                     && creature.y() < top + screenHeight) {
                 if (player.canSee(creature.x(), creature.y())) {
-                    terminal.write(creature.glyph(), creature.x() - left, creature.y() - top, creature.color());
+                    terminal.write(creature.glyph(), creature.x() - left, creature.y() - top);
                 }
             }
         }
@@ -147,7 +147,7 @@ public class PlayScreen implements Screen {
         // Terrain and creatures
         displayTiles(terminal, getScrollX(), getScrollY());
         // Player
-        terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY(), player.color());
+        terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY());
         // Stats
         String hpStat = String.format("%3d:%3d HP", player.hp(), player.maxHP());
         terminal.write(hpStat, this.screenWidth+1, 15);

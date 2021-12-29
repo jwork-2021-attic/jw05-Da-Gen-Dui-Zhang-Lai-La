@@ -37,11 +37,6 @@ public class Creature {
         return this.glyph;
     }
 
-    private Color color;
-
-    public Color color() {
-        return this.color;
-    }
 
     private CreatureAI ai;
 
@@ -176,10 +171,9 @@ public int giveDefense() {
     public int giveGrade(){
         return this.giveGrade;
     }
-    public Creature(World world, char glyph, Color color, int maxHP, int attack, int defense, int visionRadius) {
+    public Creature(World world, char glyph, int maxHP, int attack, int defense, int visionRadius) {
         this.world = world;
         this.glyph = glyph;
-        this.color = color;
         this.maxHP = maxHP;
         this.hp = maxHP;
         this.attackValue = attack;

@@ -26,11 +26,11 @@ import java.awt.Color;
  */
 public enum Tile {
 
-    FLOOR((char)61, Color.gray),
+    FLOOR((char)13),
 
-    WALL((char)43,Color.cyan),
+    WALL((char)12),
 
-    BOUNDS((char)123, AsciiPanel.red);
+    BOUNDS((char)123);
 
     private char glyph;
 
@@ -52,8 +52,7 @@ public enum Tile {
         return this != Tile.WALL && this != Tile.BOUNDS;
     }
 
-    Tile(char glyph, Color color) {
+    Tile(char glyph) {
         this.glyph = glyph;
-        this.color = color;
     }
 }
