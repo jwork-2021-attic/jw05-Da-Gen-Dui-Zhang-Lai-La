@@ -5,8 +5,8 @@ public class Player extends Creature{
     int exp;
     int money;
 <span class="fc" id="L7">    int grade=0;</span>
-    public Player(World world, char glyph, Color color, int maxHP, int attack, int defense, int visionRadius,int maxExp) {
-<span class="fc" id="L9">        super(world,  glyph, color,  maxHP,  attack, defense, visionRadius);</span>
+    public Player(World world, char glyph, int maxHP, int attack, int defense, int visionRadius,int maxExp) {
+<span class="fc" id="L9">        super(world,  glyph,   maxHP,  attack, defense, visionRadius);</span>
 <span class="fc" id="L10">        this.maxExp=maxExp;</span>
 <span class="fc" id="L11">        this.exp=0;</span>
         //this.money=0;

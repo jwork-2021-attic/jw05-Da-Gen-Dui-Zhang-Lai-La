@@ -48,7 +48,7 @@ public class Line implements Iterable&lt;Point&gt; {
 <span class="nc bnc" id="L48" title="All 2 branches missed.">        int sy = y0 &lt; y1 ? 1 : -1;</span>
 <span class="nc" id="L49">        int err = dx - dy;</span>
 
-        while (true) {
+<span class="nc" id="L51">        while (true) {</span>
 <span class="nc" id="L52">            this.points.add(new Point(x0, y0));</span>
 <span class="nc bnc" id="L53" title="All 4 branches missed.">            if (x0 == x1 || y0 == y1) {</span>
 <span class="nc" id="L54">                break;</span>
@@ -63,7 +63,7 @@ public class Line implements Iterable&lt;Point&gt; {
 <span class="nc" id="L63">                err += dx;</span>
 <span class="nc" id="L64">                y0 += sy;</span>
             }
-<span class="nc" id="L66">        }</span>
+        }
         ;
 <span class="nc" id="L68">    }</span>
 

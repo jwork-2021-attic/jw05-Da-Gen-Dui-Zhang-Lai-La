@@ -37,154 +37,148 @@ public class Creature {
 <span class="nc" id="L37">        return this.glyph;</span>
     }
 
-    private Color color;
-
-    public Color color() {
-<span class="fc" id="L43">        return this.color;</span>
-    }
 
     private CreatureAI ai;
 
     public void setAI(CreatureAI ai) {
-<span class="nc" id="L49">        this.ai = ai;</span>
-<span class="nc" id="L50">    }</span>
+<span class="nc" id="L44">        this.ai = ai;</span>
+<span class="nc" id="L45">    }</span>
 
     private int maxHP;
 
     public int maxHP() {
-<span class="nc" id="L55">        return this.maxHP;</span>
+<span class="nc" id="L50">        return this.maxHP;</span>
     }
     public void modifymaxHP(int amount) {
-<span class="nc" id="L58">        this.maxHP += amount;</span>
-<span class="nc" id="L59">    }</span>
+<span class="nc" id="L53">        this.maxHP += amount;</span>
+<span class="nc" id="L54">    }</span>
     private int hp;
 
     public int hp() {
-<span class="fc" id="L63">        return this.hp;</span>
+<span class="fc" id="L58">        return this.hp;</span>
     }
 
     public void modifyHP(int amount) {
-<span class="nc bnc" id="L67" title="All 2 branches missed.">        if(this.hp+amount&lt;=maxHP)</span>
-<span class="nc" id="L68">        this.hp += amount;</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if(this.hp+amount&lt;=maxHP)</span>
+<span class="nc" id="L63">        this.hp += amount;</span>
         else
-<span class="nc" id="L70">        this.hp=this.maxHP;</span>
-<span class="nc bnc" id="L71" title="All 2 branches missed.">        if (this.hp &lt; 1) {</span>
-<span class="nc" id="L72">            world.remove(this);</span>
+<span class="nc" id="L65">        this.hp=this.maxHP;</span>
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if (this.hp &lt; 1) {</span>
+<span class="nc" id="L67">            world.remove(this);</span>
         }
-<span class="nc" id="L74">    }</span>
+<span class="nc" id="L69">    }</span>
     int giveExp;
     public int giveExp(){
-<span class="nc" id="L77">        return this.giveExp;</span>
+<span class="nc" id="L72">        return this.giveExp;</span>
     }
     int giveMoney;
     public int giveMoney(){
-<span class="fc" id="L81">        return this.giveMoney;</span>
+<span class="fc" id="L76">        return this.giveMoney;</span>
     }
     int giveAttack;
    int giveDefense;
    public int giveAttack() {
-<span class="nc" id="L86">    return this.giveAttack;</span>
+<span class="nc" id="L81">    return this.giveAttack;</span>
 }
 public int giveDefense() {
-<span class="nc" id="L89">    return this.giveDefense;</span>
+<span class="nc" id="L84">    return this.giveDefense;</span>
 }
     private int attackValue;
 
     public int attackValue() {
-<span class="fc" id="L94">        return this.attackValue;</span>
+<span class="fc" id="L89">        return this.attackValue;</span>
     }
     public void modifyattackValue(int amount) {
-<span class="nc" id="L97">        this.attackValue += amount;</span>
-<span class="nc" id="L98">    }</span>
+<span class="nc" id="L92">        this.attackValue += amount;</span>
+<span class="nc" id="L93">    }</span>
     private int defenseValue;
 
     public int defenseValue() {
-<span class="fc" id="L102">        return this.defenseValue;</span>
+<span class="fc" id="L97">        return this.defenseValue;</span>
     }
     public void modifydefenseValue(int amount) {
-<span class="nc" id="L105">        this.defenseValue += amount;</span>
-<span class="nc" id="L106">    }</span>
+<span class="nc" id="L100">        this.defenseValue += amount;</span>
+<span class="nc" id="L101">    }</span>
     private int visionRadius;
 
     public int visionRadius() {
-<span class="nc" id="L110">        return this.visionRadius;</span>
+<span class="nc" id="L105">        return this.visionRadius;</span>
     }
 
     public boolean canSee(int wx, int wy) {
-<span class="nc" id="L114">        return ai.canSee(wx, wy);</span>
+<span class="nc" id="L109">        return ai.canSee(wx, wy);</span>
     }
-<span class="fc" id="L116">    boolean ifDiamond=false;</span>
+<span class="fc" id="L111">    boolean ifDiamond=false;</span>
     public boolean ifDiamond() {
-<span class="fc" id="L118">        return ifDiamond;</span>
+<span class="fc" id="L113">        return ifDiamond;</span>
     }
     public Tile tile(int wx, int wy) {
-<span class="nc" id="L121">        return world.tile(wx, wy);</span>
+<span class="nc" id="L116">        return world.tile(wx, wy);</span>
     }
 
     public void dig(int wx, int wy) {
-<span class="nc" id="L125">        world.dig(wx, wy);</span>
-<span class="nc" id="L126">    }</span>
+<span class="nc" id="L120">        world.dig(wx, wy);</span>
+<span class="nc" id="L121">    }</span>
     public void moveBy(int mx, int my) {
-<span class="nc" id="L128">        Creature other = world.creature(x + mx, y + my);</span>
+<span class="nc" id="L123">        Creature other = world.creature(x + mx, y + my);</span>
 
-<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (other == null) {</span>
-<span class="nc" id="L131">            ai.onEnter(x + mx, y + my, world.tile(x + mx, y + my));</span>
-        } else {
-<span class="nc" id="L133">            attack(other);</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">        if (other == null) {</span>
+<span class="nc" id="L126">            ai.onEnter(x + mx, y + my, world.tile(x + mx, y + my));</span>
+<span class="nc" id="L127">        } else {</span>
+<span class="nc" id="L128">            attack(other);</span>
         }
-<span class="nc" id="L135">    }</span>
+<span class="nc" id="L130">    }</span>
 
     public void attack(Creature other) {
-<span class="nc" id="L138">        int damage =this.attackValue() - other.defenseValue();</span>
-<span class="nc" id="L139">        int hurt=other.attackValue() - this.defenseValue();</span>
-<span class="nc" id="L140">        int totalHurt=0;</span>
-<span class="nc bnc" id="L141" title="All 4 branches missed.">        while(other.hp()&gt;0&amp;&amp;this.hp()&gt;0){</span>
-<span class="nc" id="L142">            other.modifyHP(-damage);</span>
-<span class="nc" id="L143">            this.modifyHP(-hurt);</span>
-<span class="nc" id="L144">            totalHurt+=hurt;</span>
+<span class="nc" id="L133">        int damage =this.attackValue() - other.defenseValue();</span>
+<span class="nc" id="L134">        int hurt=other.attackValue() - this.defenseValue();</span>
+<span class="nc" id="L135">        int totalHurt=0;</span>
+<span class="nc bnc" id="L136" title="All 4 branches missed.">        while(other.hp()&gt;0&amp;&amp;this.hp()&gt;0){</span>
+<span class="nc" id="L137">            other.modifyHP(-damage);</span>
+<span class="nc" id="L138">            this.modifyHP(-hurt);</span>
+<span class="nc" id="L139">            totalHurt+=hurt;</span>
          }
-<span class="nc" id="L146">         this.notify(&quot;You get %s hurt&quot;,totalHurt);</span>
-<span class="nc" id="L147">    }</span>
+<span class="nc" id="L141">         this.notify(&quot;You get %s hurt&quot;,totalHurt);</span>
+<span class="nc" id="L142">    }</span>
     public void attack(Monster other) {
-<span class="nc" id="L149">        int damage =this.attackValue() - other.defenseValue();</span>
-<span class="nc" id="L150">        int hurt=other.attackValue() - this.defenseValue();</span>
-<span class="nc" id="L151">        int totalHurt=0;</span>
-<span class="nc bnc" id="L152" title="All 4 branches missed.">        while(other.hp()&gt;0&amp;&amp;this.hp()&gt;0){</span>
-<span class="nc" id="L153">            other.modifyHP(-damage);</span>
-<span class="nc" id="L154">            this.modifyHP(-hurt);</span>
-<span class="nc" id="L155">            totalHurt+=hurt;</span>
+<span class="nc" id="L144">        int damage =this.attackValue() - other.defenseValue();</span>
+<span class="nc" id="L145">        int hurt=other.attackValue() - this.defenseValue();</span>
+<span class="nc" id="L146">        int totalHurt=0;</span>
+<span class="nc bnc" id="L147" title="All 4 branches missed.">        while(other.hp()&gt;0&amp;&amp;this.hp()&gt;0){</span>
+<span class="nc" id="L148">            other.modifyHP(-damage);</span>
+<span class="nc" id="L149">            this.modifyHP(-hurt);</span>
+<span class="nc" id="L150">            totalHurt+=hurt;</span>
          }
-<span class="nc" id="L157">         this.notify(&quot;You get %s hurt&quot;,totalHurt);</span>
-<span class="nc" id="L158">    }</span>
+<span class="nc" id="L152">         this.notify(&quot;You get %s hurt&quot;,totalHurt);</span>
+<span class="nc" id="L153">    }</span>
 
 
     public void showEnemy(Creature other){
-<span class="nc" id="L162">        this.notify(&quot;%s HP:%s,ATTACK:%s,DEFENSE:%s&quot;,other.glyph(),other.hp(),other.attackValue(),other.defenseValue());</span>
-<span class="nc" id="L163">        this.notify(&quot;YOU CAN GET ExP:%s,MONEY:%s &quot;,other.giveExp(),other.giveMoney());</span>
-<span class="nc" id="L164">    }</span>
+<span class="nc" id="L157">        this.notify(&quot;%s HP:%s,ATTACK:%s,DEFENSE:%s&quot;,other.glyph(),other.hp(),other.attackValue(),other.defenseValue());</span>
+<span class="nc" id="L158">        this.notify(&quot;YOU CAN GET ExP:%s,MONEY:%s &quot;,other.giveExp(),other.giveMoney());</span>
+<span class="nc" id="L159">    }</span>
     public void update() {
-<span class="nc" id="L166">        this.ai.onUpdate();</span>
-<span class="nc" id="L167">    }</span>
+<span class="nc" id="L161">        this.ai.onUpdate();</span>
+<span class="nc" id="L162">    }</span>
     public boolean canEnter(int x, int y) {
-<span class="nc" id="L169">        return world.tile(x, y).isGround();</span>
+<span class="nc" id="L164">        return world.tile(x, y).isGround();</span>
     }
 
     public void notify(String message, Object... params) {
-<span class="nc" id="L173">        ai.onNotify(String.format(message, params));</span>
-<span class="nc" id="L174">    }</span>
+<span class="nc" id="L168">        ai.onNotify(String.format(message, params));</span>
+<span class="nc" id="L169">    }</span>
     int giveGrade;
     public int giveGrade(){
-<span class="fc" id="L177">        return this.giveGrade;</span>
+<span class="fc" id="L172">        return this.giveGrade;</span>
     }
-<span class="fc" id="L179">    public Creature(World world, char glyph, Color color, int maxHP, int attack, int defense, int visionRadius) {</span>
-<span class="fc" id="L180">        this.world = world;</span>
-<span class="fc" id="L181">        this.glyph = glyph;</span>
-<span class="fc" id="L182">        this.color = color;</span>
-<span class="fc" id="L183">        this.maxHP = maxHP;</span>
-<span class="fc" id="L184">        this.hp = maxHP;</span>
-<span class="fc" id="L185">        this.attackValue = attack;</span>
-<span class="fc" id="L186">        this.defenseValue = defense;</span>
-<span class="fc" id="L187">        this.visionRadius = visionRadius;</span>
-<span class="fc" id="L188">    }</span>
+<span class="fc" id="L174">    public Creature(World world, char glyph, int maxHP, int attack, int defense, int visionRadius) {</span>
+<span class="fc" id="L175">        this.world = world;</span>
+<span class="fc" id="L176">        this.glyph = glyph;</span>
+<span class="fc" id="L177">        this.maxHP = maxHP;</span>
+<span class="fc" id="L178">        this.hp = maxHP;</span>
+<span class="fc" id="L179">        this.attackValue = attack;</span>
+<span class="fc" id="L180">        this.defenseValue = defense;</span>
+<span class="fc" id="L181">        this.visionRadius = visionRadius;</span>
+<span class="fc" id="L182">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

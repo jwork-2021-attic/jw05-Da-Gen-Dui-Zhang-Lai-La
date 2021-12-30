@@ -26,11 +26,11 @@ import java.awt.Color;
  */
 <span class="fc" id="L27">public enum Tile {</span>
 
-<span class="fc" id="L29">    FLOOR((char)61, Color.gray),</span>
+<span class="fc" id="L29">    FLOOR((char)13),</span>
 
-<span class="fc" id="L31">    WALL((char)43,Color.cyan),</span>
+<span class="fc" id="L31">    WALL((char)12),</span>
 
-<span class="fc" id="L33">    BOUNDS((char)123, AsciiPanel.red);</span>
+<span class="fc" id="L33">    BOUNDS((char)123);</span>
 
     private char glyph;
 
@@ -52,9 +52,8 @@ import java.awt.Color;
 <span class="nc bnc" id="L52" title="All 4 branches missed.">        return this != Tile.WALL &amp;&amp; this != Tile.BOUNDS;</span>
     }
 
-<span class="fc" id="L55">    Tile(char glyph, Color color) {</span>
+<span class="fc" id="L55">    Tile(char glyph) {</span>
 <span class="fc" id="L56">        this.glyph = glyph;</span>
-<span class="fc" id="L57">        this.color = color;</span>
-<span class="fc" id="L58">    }</span>
+<span class="fc" id="L57">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

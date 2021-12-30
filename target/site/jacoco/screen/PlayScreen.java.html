@@ -67,13 +67,13 @@ public class PlayScreen implements Screen {
         }   
 <span class="nc" id="L68">        creatureFactory.newDiamond(messages);</span>
 <span class="nc" id="L69">            new Thread(     //循环生成怪物，时间越长怪物越多越强</span>
-            ()-&gt;{
-                    while (true){
+<span class="nc" id="L70">            ()-&gt;{</span>
+<span class="nc" id="L71">                    while (true){</span>
                         try {
 <span class="nc" id="L73">                            Thread.sleep(10000);</span>
 <span class="nc" id="L74">                        } catch (InterruptedException e) {</span>
 <span class="nc" id="L75">                            e.printStackTrace();</span>
-<span class="nc" id="L76">                        }</span>
+                        }
 <span class="nc" id="L77">                            countTime++;    </span>
 <span class="nc bnc" id="L78" title="All 2 branches missed.">                            for(int i=0;i&lt;2;i++){</span>
 <span class="nc" id="L79">                            Random rand = new Random();</span>
@@ -94,13 +94,13 @@ public class PlayScreen implements Screen {
 <span class="nc" id="L94">        ).start();</span>
 
 <span class="nc" id="L96">        new Thread(     //每隔一段时间生成宝石</span>
-        ()-&gt;{
-                while (true){
+<span class="nc" id="L97">        ()-&gt;{</span>
+<span class="nc" id="L98">                while (true){</span>
                     try {
 <span class="nc" id="L100">                        Thread.sleep(40000);</span>
 <span class="nc" id="L101">                    } catch (InterruptedException e) {</span>
 <span class="nc" id="L102">                        e.printStackTrace();</span>
-<span class="nc" id="L103">                    }</span>
+                    }
 <span class="nc" id="L104">                    creatureFactory.newDiamond(this.messages);</span>
                         }
         }
@@ -126,10 +126,10 @@ public class PlayScreen implements Screen {
 <span class="nc bnc" id="L126" title="All 6 branches missed.">            if (creature.x() &gt;= left &amp;&amp; creature.x() &lt; left + screenWidth &amp;&amp; creature.y() &gt;= top</span>
 <span class="nc bnc" id="L127" title="All 2 branches missed.">                    &amp;&amp; creature.y() &lt; top + screenHeight) {</span>
 <span class="nc bnc" id="L128" title="All 2 branches missed.">                if (player.canSee(creature.x(), creature.y())) {</span>
-<span class="nc" id="L129">                    terminal.write(creature.glyph(), creature.x() - left, creature.y() - top, creature.color());</span>
+<span class="nc" id="L129">                    terminal.write(creature.glyph(), creature.x() - left, creature.y() - top);</span>
                 }
             }
-<span class="nc" id="L132">        }</span>
+        }
         // Creatures can choose their next action now
 <span class="nc" id="L134">        world.update();</span>
 <span class="nc" id="L135">    }</span>
@@ -147,7 +147,7 @@ public class PlayScreen implements Screen {
         // Terrain and creatures
 <span class="nc" id="L148">        displayTiles(terminal, getScrollX(), getScrollY());</span>
         // Player
-<span class="nc" id="L150">        terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY(), player.color());</span>
+<span class="nc" id="L150">        terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY());</span>
         // Stats
 <span class="nc" id="L152">        String hpStat = String.format(&quot;%3d:%3d HP&quot;, player.hp(), player.maxHP());</span>
 <span class="nc" id="L153">        terminal.write(hpStat, this.screenWidth+1, 15);</span>
@@ -207,7 +207,7 @@ public class PlayScreen implements Screen {
             case 3:
 <span class="nc" id="L208">                player.modifyHP(300);</span>
                 break;
-            }
+<span class="nc" id="L210">            }</span>
 <span class="nc" id="L211">            shopCost+=4;</span>
         }
 <span class="nc" id="L213">    }</span>

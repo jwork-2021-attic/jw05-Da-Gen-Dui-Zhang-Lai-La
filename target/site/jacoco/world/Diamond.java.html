@@ -4,9 +4,9 @@ public class Diamond extends Creature {
     int giveAttack;
    int giveDefense;
 
-    public Diamond(World world, char glyph, Color color, int maxHP, int attack, int defense,
+    public Diamond(World world, char glyph, int maxHP, int attack, int defense,
      int visionRadius,int giveAttack,int giveDefense) {
-<span class="fc" id="L9">        super(world,  glyph, color,  maxHP,  attack, defense, visionRadius);</span>
+<span class="fc" id="L9">        super(world,  glyph,  maxHP,  attack, defense, visionRadius);</span>
 <span class="fc" id="L10">        this.giveAttack=giveAttack;</span>
 <span class="fc" id="L11">        this.giveDefense=giveDefense;</span>
 <span class="fc" id="L12">        ifDiamond=true;</span>
