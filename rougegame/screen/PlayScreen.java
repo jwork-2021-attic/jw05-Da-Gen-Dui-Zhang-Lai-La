@@ -41,6 +41,7 @@ public class PlayScreen implements Screen {
     int saveMoney=0;
     int saveX;
     int saveY;
+    int grade;
     int countTime=0;
     public PlayScreen() {
         this.screenWidth = 30;
@@ -126,7 +127,7 @@ public class PlayScreen implements Screen {
             if (creature.x() >= left && creature.x() < left + screenWidth && creature.y() >= top
                     && creature.y() < top + screenHeight) {
                 if (player.canSee(creature.x(), creature.y())) {
-                    terminal.write(creature.glyph(), creature.x() - left, creature.y() - top, creature.color());
+                    terminal.write(creature.glyph(), creature.x() - left, creature.y() - top);
                 }
             }
         }
@@ -147,7 +148,7 @@ public class PlayScreen implements Screen {
         // Terrain and creatures
         displayTiles(terminal, getScrollX(), getScrollY());
         // Player
-        terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY(), player.color());
+        terminal.write(player.glyph(), player.x() - getScrollX(), player.y() - getScrollY());
         // Stats
         String hpStat = String.format("%3d:%3d HP", player.hp(), player.maxHP());
         terminal.write(hpStat, this.screenWidth+1, 15);
@@ -177,7 +178,7 @@ public class PlayScreen implements Screen {
         // Messages
         displayMessages(terminal, this.messages);
         if(player.hp()<=0){       
-            return new LoseScreen();
+            return new LoseScreen(this.player.getGrade());
         }
         return this;
     }
@@ -219,6 +220,7 @@ public class PlayScreen implements Screen {
          saveMoney=this.player.money();
          saveX=this.player.x();
          saveY=this.player.y();
+         grade=player.getGrade();
         this.player.notify("SAVE SUCESS");
     }
     public void loadPlayerData(){
@@ -229,6 +231,7 @@ public class PlayScreen implements Screen {
        this.player.getMoney(saveMoney-this.player.money());
         this.player.setX(saveX);
         this.player.setY(saveY);
+        this.player.modifyGrade(grade-this.player.getGrade());
         this.player.notify("LOAD SUCESS");
     }
     @Override
@@ -286,4 +289,7 @@ public class PlayScreen implements Screen {
         return Math.max(0, Math.min(player.y() - screenHeight / 2, world.height() - screenHeight));
     }
 
+    public boolean ifServer(){
+        return false;
+    }
 }

@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.LookupOp;
 import java.awt.image.ShortLookupTable;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
@@ -18,6 +19,7 @@ import javax.swing.JPanel;
  */
 public class AsciiPanel extends JPanel {
     private static final long serialVersionUID = -4167851861147593092L;
+
     /**
      * The color black (pure black).
      */
@@ -98,13 +100,12 @@ public class AsciiPanel extends JPanel {
      */
     public static Color brightWhite = new Color(255, 255, 255);
 
-
     private Image offscreenBuffer;
     private Graphics offscreenGraphics;
     private int widthInCharacters;
     private int heightInCharacters;
-    private int charWidth = 119;
-    private int charHeight = 116;
+    private int charWidth = 9;
+    private int charHeight = 16;
     private String terminalFontFile = "cp437_9x16.png";
     private Color defaultBackgroundColor;
     private Color defaultForegroundColor;
@@ -364,19 +365,12 @@ public class AsciiPanel extends JPanel {
 
         for (int x = 0; x < widthInCharacters; x++) {
             for (int y = 0; y < heightInCharacters; y++) {
-                if (oldBackgroundColors[x][y] == backgroundColors[x][y]
-                        && oldForegroundColors[x][y] == foregroundColors[x][y] && oldChars[x][y] == chars[x][y])
+                if (oldChars[x][y] == chars[x][y])
                     continue;
 
-                Color bg = backgroundColors[x][y];
-                Color fg = foregroundColors[x][y];
-
-                LookupOp op = setColors(bg, fg);
-                BufferedImage img = op.filter(glyphs[chars[x][y]], null);
+                BufferedImage img = glyphs[chars[x][y]];
                 offscreenGraphics.drawImage(img, x * charWidth, y * charHeight, null);
 
-                oldBackgroundColors[x][y] = backgroundColors[x][y];
-                oldForegroundColors[x][y] = foregroundColors[x][y];
                 oldChars[x][y] = chars[x][y];
             }
         }
@@ -400,7 +394,6 @@ public class AsciiPanel extends JPanel {
                     sy + charHeight, null);
         }
     }
-
 
     /**
      * Create a <code>LookupOp</code> object (lookup table) mapping the original

@@ -28,7 +28,8 @@ public class StartScreen extends RestartScreen {
     @Override
     public Screen displayOutput(AsciiPanel terminal) {
         terminal.write("WELCOME TO MAGIC TOWER", 0, 0);
-        terminal.write("PRESS ENTER TO PLAY", 0, 1);
+        terminal.write("PRESS 'F1' TO OPEN SERVER", 0, 1);
+        terminal.write("PRESS 'ENTER' TO PLAY", 0, 2);
         return this;
     }
    

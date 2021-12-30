@@ -1,4 +1,4 @@
-视频地址：https://www.bilibili.com/video/BV17r4y1m7Ac?spm_id_from=333.999.0.0
+视频地址（jw07）：https://www.bilibili.com/video/BV18P4y1J7rN?spm_id_from=333.999.0.0
 
 游戏灵感来源：魔塔
 
@@ -28,3 +28,4 @@ maven管理√（详见分支jwork6）
 
 单元测试√（详见分支jwork6）
 
+网络链接√（实现单人游戏后将分数上传到Grade.txt中并排名，详见jw07分支）

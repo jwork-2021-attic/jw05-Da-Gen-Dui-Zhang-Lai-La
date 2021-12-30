@@ -17,8 +17,10 @@
  */
 package screen;
 
+import netTool.*;
 import asciiPanel.AsciiPanel;
 import java.awt.event.KeyEvent;
+import java.io.IOException;
 
 /**
  *
@@ -26,16 +28,27 @@ import java.awt.event.KeyEvent;
  */
 public abstract class RestartScreen implements Screen {
 
-    @Override
+
     public abstract Screen displayOutput(AsciiPanel terminal);
 
-    @Override
     public Screen respondToUserInput(KeyEvent key) {
         switch (key.getKeyCode()) {
             case KeyEvent.VK_ENTER:
                 return new PlayScreen();
+            case KeyEvent.VK_F1:{
+                try {
+                    NetServer netserver=new NetServer();
+                     netserver.serverStart();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return new ThankScreen();
+        }
             default:
                 return this;
         }
+    }
+    public boolean ifServer(){
+        return false;
     }
 }

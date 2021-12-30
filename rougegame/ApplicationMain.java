@@ -1,9 +1,12 @@
 
+
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
-
+import java.io.IOException;
+import netTool.*;
 import asciiPanel.AsciiFont;
 import asciiPanel.AsciiPanel;
 import screen.Screen;
@@ -33,6 +36,7 @@ public class ApplicationMain extends JFrame implements KeyListener {
         terminal.clear();
         screen=screen.displayOutput(terminal);
         super.repaint();
+      
     }
 
     /**

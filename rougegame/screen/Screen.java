@@ -29,4 +29,5 @@ public interface Screen {
     public Screen displayOutput(AsciiPanel terminal);
 
     public Screen respondToUserInput(KeyEvent key);
+    public boolean ifServer();
 }

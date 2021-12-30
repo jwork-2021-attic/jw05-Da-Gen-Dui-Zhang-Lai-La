@@ -16,18 +16,23 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package screen;
-
+import java.io.IOException;
 import asciiPanel.AsciiPanel;
-
+import netTool.*;
 /**
  *
  * @author Aeranythe Echosong
  */
-public class WinScreen extends RestartScreen {
+public class ThankScreen extends RestartScreen {
 
     @Override
-    public Screen displayOutput(AsciiPanel terminal) {
-        terminal.write("You won! Press enter to go again.", 0, 0);
+    public Screen displayOutput(AsciiPanel terminal) {   
+        terminal.write("Thanks For Playing.", 0, 0);
+   
         return this;
+    }
+    @Override
+    public boolean ifServer(){
+        return true;
     }
 }

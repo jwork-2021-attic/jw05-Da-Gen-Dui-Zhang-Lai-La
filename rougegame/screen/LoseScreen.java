@@ -16,19 +16,36 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 package screen;
-
+import java.io.IOException;
 import asciiPanel.AsciiPanel;
-
+import netTool.*;
 /**
  *
  * @author Aeranythe Echosong
  */
 public class LoseScreen extends RestartScreen {
-
+    int finalGrade;
+    String rank;
+    LoseScreen(int grade){
+        this.finalGrade=grade;
+    }
     @Override
     public Screen displayOutput(AsciiPanel terminal) {
+        getRank();
         terminal.write("YOU DIE,PRESS RNTER TO TRY AGAIN.", 0, 0);
+        String gradeData = String.format("GRADE:%3d", this.finalGrade);
+        terminal.write(gradeData, 0, 1);
+        String rankData = String.format("YOUR RANK:%s", this.rank);
+        terminal.write(rankData, 0, 2);
         return this;
     }
-
+    private void getRank() {
+        try {
+            NetClient netClient = new NetClient(this.finalGrade);
+            this.rank= netClient.getRank();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+    }
 }
